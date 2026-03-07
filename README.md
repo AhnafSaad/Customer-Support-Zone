@@ -1,41 +1,102 @@
-Conceptual Questions & Answers
-1. What is JSX, and why is it used?
+📘 React Conceptual Questions & Answers
+1️⃣ What is JSX, and why is it used?
+
 Answer:
-JSX এর পূর্ণরূপ হলো JavaScript XML। এটি জাভাস্ক্রিপ্টের একটি সিনট্যাক্স এক্সটেনশন যা আমাদের জাভাস্ক্রিপ্ট ফাইলের ভেতরেই HTML এর মতো কোড লিখতে সাহায্য করে।
 
-কেন ব্যবহার করা হয়? সাধারণ জাভাস্ক্রিপ্ট দিয়ে UI তৈরি করা বেশ জটিল ও সময়সাপেক্ষ। JSX ব্যবহার করলে কোড দেখতে অনেক পরিষ্কার লাগে এবং সহজে বোঝা যায় কোন স্ট্রাকচারটি ব্রাউজারে রেন্ডার হবে। এটি রিঅ্যাক্ট অ্যাপ্লিকেশনের পারফরম্যান্স বৃদ্ধিতেও সহায়তা করে।
+JSX এর পূর্ণরূপ হলো JavaScript XML। এটি জাভাস্ক্রিপ্টের একটি syntax extension যা আমাদের জাভাস্ক্রিপ্ট ফাইলের ভেতরেই HTML-এর মতো কোড লিখতে সাহায্য করে।
 
-2. What is the difference between State and Props?
+কেন ব্যবহার করা হয়?
+
+সাধারণ জাভাস্ক্রিপ্ট দিয়ে UI তৈরি করা বেশ জটিল ও সময়সাপেক্ষ। JSX ব্যবহার করলে—
+
+কোড দেখতে অনেক পরিষ্কার লাগে
+
+সহজে বোঝা যায় কোন স্ট্রাকচারটি ব্রাউজারে render হবে
+
+React অ্যাপ্লিকেশন তৈরি করা সহজ হয়
+
+2️⃣ What is the difference between State and Props?
+
 Answer:
-সহজ কথায় বলতে গেলে:
 
-Props: এটি হলো 'Properties' এর সংক্ষিপ্ত রূপ। এটি এক কম্পোনেন্ট থেকে অন্য কম্পোনেন্টে (সাধারণত প্যারেন্ট থেকে চাইল্ডে) ডাটা পাঠানোর জন্য ব্যবহৃত হয়। প্রপস Read-only, অর্থাৎ যে কম্পোনেন্ট এটি পায় সে এটি পরিবর্তন করতে পারে না।
+সহজভাবে বলতে গেলে:
 
-State: এটি একটি কম্পোনেন্টের নিজস্ব ডাটা স্টোরেজ। স্টেট হলো Mutable বা পরিবর্তনশীল। যখনই স্টেটের ভ্যালু পরিবর্তন হয়, রিঅ্যাক্ট অটোমেটিক্যালি ওই কম্পোনেন্টটিকে পুনরায় রেন্ডার করে নতুন ডাটা দেখায়।
+Props
 
-3. What is the useState hook, and how does it work?
+Props হলো Properties এর সংক্ষিপ্ত রূপ
+
+এটি এক কম্পোনেন্ট থেকে অন্য কম্পোনেন্টে ডাটা পাঠানোর জন্য ব্যবহার করা হয়
+
+সাধারণত Parent → Child এ ডাটা যায়
+
+Props হলো Read-only (চাইল্ড কম্পোনেন্ট এটি পরিবর্তন করতে পারে না)
+
+State
+
+State হলো একটি কম্পোনেন্টের নিজস্ব ডাটা স্টোরেজ
+
+এটি Mutable (পরিবর্তনশীল)
+
+যখন State পরিবর্তন হয়, তখন React স্বয়ংক্রিয়ভাবে কম্পোনেন্টকে পুনরায় render করে
+
+3️⃣ What is the useState hook, and how does it work?
+
 Answer:
-useState হলো রিঅ্যাক্টের একটি বিল্ট-ইন ফাংশন (Hook) যা ফাংশনাল কম্পোনেন্টে স্টেট ম্যানেজ করতে ব্যবহৃত হয়।
 
-কাজ করার পদ্ধতি: যখন আমরা useState কল করি, এটি একটি অ্যারে রিটার্ন করে যার দুটি অংশ থাকে:
+useState হলো React-এর একটি built-in Hook যা functional component-এ state manage করতে ব্যবহার করা হয়।
 
-Current State: বর্তমান ভ্যালু।
+কাজ করার পদ্ধতি
 
-Updater Function: এই ভ্যালু পরিবর্তন করার জন্য একটি ফাংশন।
+যখন আমরা useState ব্যবহার করি, এটি একটি array return করে যার দুটি অংশ থাকে:
 
-যেমন: const [count, setCount] = useState(0); এখানে count হলো বর্তমান মান এবং setCount দিয়ে আমরা মান পরিবর্তন করতে পারি।
+Current State → বর্তমান ভ্যালু
 
-4. How can you share state between components in React?
+Updater Function → ভ্যালু পরিবর্তন করার ফাংশন
+
+Example
+const [count, setCount] = useState(0);
+
+এখানে:
+
+count → বর্তমান state value
+
+setCount() → state update করার function
+
+4️⃣ How can you share state between components in React?
+
 Answer:
-রিঅ্যাক্টে কম্পোনেন্টগুলোর মধ্যে স্টেট শেয়ার করার প্রধান উপায় হলো "Lifting State Up"।
-যদি দুটি চাইল্ড কম্পোনেন্টের একই ডাটা প্রয়োজন হয়, তবে সেই স্টেটটিকে তাদের কমন প্যারেন্ট (Parent) কম্পোনেন্টে রাখা হয়। এরপর প্রপস (Props) এর মাধ্যমে সেই ডাটা চাইল্ড কম্পোনেন্টগুলোতে পাঠিয়ে দেওয়া হয়। এছাড়াও বড় প্রজেক্টের ক্ষেত্রে Context API বা Redux ব্যবহার করা হয়।
 
-5. How is event handling done in React?
+React-এ কম্পোনেন্টগুলোর মধ্যে state শেয়ার করার প্রধান উপায় হলো Lifting State Up।
+
+কিভাবে কাজ করে
+
+যদি দুটি child component এর একই data প্রয়োজন হয়:
+
+সেই state তাদের common parent component-এ রাখা হয়
+
+তারপর props এর মাধ্যমে child component গুলোতে পাঠানো হয়
+
+Other Methods (Large Projects)
+
+Context API
+
+Redux
+
+5️⃣ How is event handling done in React?
+
 Answer:
-রিঅ্যাক্টে ইভেন্ট হ্যান্ডলিং অনেকটা HTML এর মতোই, তবে দুটি প্রধান পার্থক্য আছে:
 
-ইভেন্টের নামগুলো camelCase এ লিখতে হয় (যেমন: onclick না লিখে onClick)।
+React-এ event handling অনেকটা HTML এর মতো, তবে কিছু গুরুত্বপূর্ণ পার্থক্য আছে।
 
-ইভেন্ট হ্যান্ডলার হিসেবে সরাসরি একটি ফাংশন পাস করতে হয়, স্ট্রিং নয়।
+Main Differences
 
-উদাহরণ: <button onClick={handleClick}> Click Me </button>
+1️⃣ Event name camelCase এ লিখতে হয়
+❌ onclick
+✅ onClick
+
+2️⃣ Event handler হিসেবে function pass করতে হয়, string নয়
+
+Example
+<button onClick={handleClick}>Click Me</button>
+
+এখানে handleClick একটি function যা button click করলে execute হবে।
