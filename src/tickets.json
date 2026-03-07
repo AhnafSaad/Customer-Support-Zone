@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1001,
+    "title": "Login Issue on Mobile",
+    "description": "User unable to log in using the Android app. Shows 'Invalid Credentials' even with correct password.",
+    "customer": "Ariful Islam",
+    "priority": "HIGH PRIORITY",
+    "status": "Open",
+    "createdAt": "2025-05-10"
+  },
+  {
+    "id": 1002,
+    "title": "Payment Refund Request",
+    "description": "Customer was charged twice for the monthly subscription. Requesting a refund for the extra charge.",
+    "customer": "Sadia Rahman",
+    "priority": "HIGH PRIORITY",
+    "status": "Pending",
+    "createdAt": "2025-05-11"
+  },
+  {
+    "id": 1003,
+    "title": "Slow Dashboard Loading",
+    "description": "The main dashboard takes more than 10 seconds to load for users with large datasets.",
+    "customer": "Tanvir Ahmed",
+    "priority": "MEDIUM PRIORITY",
+    "status": "Open",
+    "createdAt": "2026-03-12"
+  },
+  {
+    "id": 1004,
+    "title": "Update Profile Picture Error",
+    "description": "Users are getting a 500 server error when trying to upload a PNG profile picture.",
+    "customer": "Nusrat Jahan",
+    "priority": "LOW PRIORITY",
+    "status": "Open",
+    "createdAt": "2026-02-12"
+  },
+  {
+    "id": 1005,
+    "title": "Forgot Password Email Not Received",
+    "description": "Several users reported they are not receiving the password reset link in their inbox or spam.",
+    "customer": "Rakib Hasan",
+    "priority": "HIGH PRIORITY",
+    "status": "In-Progress",
+    "createdAt": "2026-01-13"
+  },
+  {
+    "id": 1006,
+    "title": "Broken Links in Footer",
+    "description": "The 'Privacy Policy' and 'Terms of Service' links in the footer are leading to 404 pages.",
+    "customer": "Mehedi Hasan",
+    "priority": "LOW PRIORITY",
+    "status": "Pending",
+    "createdAt": "2026-04-13"
+  },
+  {
+    "id": 1007,
+    "title": "Feature Request: Dark Mode",
+    "description": "Customer is asking if there is any plan to implement dark mode for the support portal.",
+    "customer": "Fahim Shahriar",
+    "priority": "LOW PRIORITY",
+    "status": "Open",
+    "createdAt": "2026-05-14"
+  },
+  {
+    "id": 1008,
+    "title": "Checkout Page Crash",
+    "description": "The site crashes when a user tries to apply a coupon code on the checkout page.",
+    "customer": "Sabrina Akter",
+    "priority": "HIGH PRIORITY",
+    "status": "In-Progress",
+    "createdAt": "2026-05-14"
+  },
+  {
+    "id": 1009,
+    "title": "Missing Invoice for Order #5542",
+    "description": "User didn't receive the PDF invoice after a successful purchase. Needs it for tax purposes.",
+    "customer": "Kamrul Islam",
+    "priority": "MEDIUM PRIORITY",
+    "status": "Pending",
+    "createdAt": "2026-05-15"
+  },
+  {
+    "id": 1010,
+    "title": "Notification Sound Issue",
+    "description": "Desktop notifications are working, but the alert sound is not playing on Chrome.",
+    "customer": "Laila Hossain",
+    "priority": "LOW PRIORITY",
+    "status": "Open",
+    "createdAt": "2026-05-15"
+  },
+  {
+    "id": 1011,
+    "title": "API Access Denied",
+    "description": "Developer customer reporting that their API key is being rejected despite being active.",
+    "customer": "Zubayer Ahmed",
+    "priority": "HIGH PRIORITY",
+    "status": "Open",
+    "createdAt": "2026-05-16"
+  },
+  {
+    "id": 1012,
+    "title": "Typo on Homepage",
+    "description": "There is a spelling mistake in the main banner text: 'Excllence' instead of 'Excellence'.",
+    "customer": "Anika Tabassum",
+    "priority": "LOW PRIORITY",
+    "status": "In-Progress",
+    "createdAt": "2026-05-16"
+  },
+  {
+    "id": 1013,
+    "title": "Export to Excel Failing",
+    "description": "The 'Export Reports' button is unresponsive when trying to download data for last month.",
+    "customer": "Sajid Khan",
+    "priority": "MEDIUM PRIORITY",
+    "status": "Pending",
+    "createdAt": "2026-05-17"
+  },
+  {
+    "id": 1014,
+    "title": "Account Deactivation Request",
+    "description": "User wants to permanently close their account and delete all associated data.",
+    "customer": "Rina Parvin",
+    "priority": "MEDIUM PRIORITY",
+    "status": "In-Progress",
+    "createdAt": "2026-05-17"
+  },
+  {
+    "id": 1015,
+    "title": "App Crashing on iOS 17",
+    "description": "Multiple reports of the app closing unexpectedly right after the splash screen on iPhone 15.",
+    "customer": "Imtiaz Ahmed",
+    "priority": "HIGH PRIORITY",
+    "status": "Open",
+    "createdAt": "2026-05-18"
+  }
+]
