@@ -13,7 +13,7 @@ const Footer = () => {
                             CS — Ticket System is a streamlined customer support platform designed to manage and resolve issues efficiently.
                         </p>
                     </div>
-                    {/* 2, 3, 4: Company, Services, Information */}
+                    
                     {[
             { title: "Company", links: ["About Us", "Our Mission", "Contact Sales"] },
             { title: "Services", links: ["Products & Services", "Customer Stories", "Download Apps"] },
@@ -31,20 +31,20 @@ const Footer = () => {
                         </ul>
                     </div>
                     ))}
-                     {/* 5. Social Links (Responsive Logic) */}
+                   
                     <div className="text-center lg:text-left space-y-6">
                         <h3 className="text-lg font-semibold border-b border-gray-800 pb-2 lg:border-none inline-block lg:block">
                             Social Links
                         </h3>
 
-                    {/* Mobile View: Just Logos (Hidden on LG) */}
+                   
                     <div className="flex lg:hidden justify-center gap-4">
                         <div className="w-10 h-10 flex items-center justify-center border border-gray-700 rounded-full font-bold">X</div>
                         <div className="w-10 h-10 flex items-center justify-center border border-gray-700 rounded-full font-bold">in</div>
                         <div className="w-10 h-10 flex items-center justify-center border border-gray-700 rounded-full font-bold">f</div>
                     </div>
 
-                    {/* Desktop View: Logos with Text (Hidden on Mobile/Tablet) */}
+                    
                     <div className="hidden lg:flex flex-col gap-4 text-gray-400 text-sm">
                         <div className="flex items-center gap-3 hover:text-white cursor-pointer">
                             <span className="w-6 h-6 flex items-center justify-center border border-gray-600 rounded-full text-[10px]">X</span>
@@ -61,14 +61,14 @@ const Footer = () => {
                     </div>
 
                         <div className="text-gray-400 text-xs flex justify-center lg:justify-start items-center gap-2">
-                            <span>✉️</span> support@cst.com
+                            <span>✉️</span> ahnafsadik01857@gmail.com
                         </div>
                     </div>
                 </div>
-                        {/* Copyright */}
+                      
                 <div className="border-t border-gray-800 pt-8 mt-4 text-center">
                     <p className="text-xs text-gray-500 tracking-widest uppercase">
-                        © 2026 CS — Ticket System. All rights reserved.
+                        © Ahnaf Sadik Saad.All rights reserved.
                     </p>
                 </div>
             </div>
