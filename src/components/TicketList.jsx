@@ -2,54 +2,59 @@ import React, { useState } from 'react';
 
 const TicketList = ({ tickets, onSelect, taskStatus, onComplete, resolvedTasks }) => {
   const [visibleCount, setVisibleCount] = useState(10);
-  // eslint-disable-next-line no-unused-vars
-  const handleSeeMore = () => {
-    setVisibleCount(
-      prevCount => prevCount + 5
-    );
+
+  const getPriorityBadge = (priority) => {
+    if (priority === 'HIGH PRIORITY') return 'badge-error';
+    if (priority === 'MEDIUM PRIORITY') return 'badge-warning';
+    return 'badge-success';
   };
+
+  const getStatusBadge = (status) => {
+    if (status === 'Open') return 'badge-success';
+    if (status === 'In-Progress') return 'badge-info';
+    return 'badge-warning';
+  };
+
   return (
     <div className="bg-[#F5F5F5] px-4 md:px-16 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div className="lg:col-span-2 order-2 lg:order-1">
           <h2 className="text-2xl font-bold text-[#001931] mb-6">Customer Tickets</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {tickets.slice(0, visibleCount).map((ticket) => (
-              <div 
-                key={ticket.id} 
+              <div
+                key={ticket.id}
                 onClick={() => onSelect(ticket)}
-                className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between cursor-pointer hover:shadow-md transition-all h-full"
+                className="card bg-base-100 shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-all h-full"
               >
-                
-                <div className="flex justify-between items-start mb-3 gap-2">
-                  <h3 className="font-bold text-[#001931] text-[16px] leading-tight flex-1">{ticket.title}</h3>
-                  <span className={`text-[10px] font-bold px-2 py-1 rounded-full ${ticket.status === 'Open' ? 'text-[#02A53B] bg-[#E6F6EC]' :ticket.status === 'In-Progress' ? 'text-[#0052CC] bg-[#E9F2FF]': 'text-[#FEBB0C] bg-[#FFF8E6]'}`}>
-                    {ticket.status}
-                  </span>
-                </div>
-                <p className="text-[#627382] text-[12px] mb-5 line-clamp-2">{ticket.description}</p>
-                
-                <div className="flex justify-between items-center text-[10px] font-bold border-t border-gray-50 pt-3">
-                  <span className='text-gray-400'>#{ticket.id}</span>
-                  <span className={`text-[10px] font-bold ${
-                  ticket.priority === 'HIGH PRIORITY' ? 'text-[#F83044]' : 
-                  ticket.priority === 'MEDIUM PRIORITY' ? 'text-[#FEBB0C]' :  'text-[#02A53B]'  
-                  }`}>
+                <div className="card-body p-5">
+                  <div className="flex justify-between items-start mb-3 gap-2">
+                    <h3 className="card-title text-[16px] leading-tight flex-1">{ticket.title}</h3>
+                    <div className={`badge badge-sm ${getStatusBadge(ticket.status)}`}>
+                      {ticket.status}
+                    </div>
+                  </div>
+
+                  <p className="text-[#627382] text-[12px] mb-5 line-clamp-2">{ticket.description}</p>
+
+                  <div className="flex justify-between items-center text-[10px] font-bold border-t border-gray-50 pt-3">
+                    <span className='text-gray-400'>#{ticket.id}</span>
+                    <div className={`badge badge-sm ${getPriorityBadge(ticket.priority)}`}>
                       {ticket.priority}
-                  </span>
-                  <div className="flex gap-2 text-[#627382]">
-                    <span>{ticket.customer}</span>
-                    <span>📅 {ticket.createdAt}</span>
+                    </div>
+                    <div className="flex gap-2 text-[#627382]">
+                      <span>{ticket.customer}</span>
+                      <span>📅 {ticket.createdAt}</span>
+                    </div>
                   </div>
                 </div>
-                
               </div>
             ))}
           </div>
           {visibleCount < tickets.length && (
             <div className="flex justify-center mt-10">
-              <button onClick={() => setVisibleCount(visibleCount + 5)} className="bg-[#001931] text-white px-8 py-3 rounded-full font-bold">
+              <button onClick={() => setVisibleCount(visibleCount + 5)} className="btn bg-[#001931] text-white hover:bg-blue-900">
                 See More Tickets
               </button>
             </div>

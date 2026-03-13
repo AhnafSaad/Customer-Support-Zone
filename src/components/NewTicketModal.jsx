@@ -1,69 +1,116 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const NewTicketModal = ({ isOpen, onClose, onAdd }) => {
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
   const [customer, setCustomer] = useState('');
   const [priority, setPriority] = useState('LOW PRIORITY');
+  const dialogRef = useRef(null);
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    if (isOpen) {
+      dialogRef.current?.showModal();
+    } else {
+      dialogRef.current?.close();
+    }
+  }, [isOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onAdd({
       title,
       description: desc,
-      customerName: customer,
+      customer,
       priority
     });
-    setTitle(''); setDesc(''); setCustomer('');
+    setTitle('');
+    setDesc('');
+    setCustomer('');
+    setPriority('LOW PRIORITY');
+    onClose();
+  };
+
+  const handleClose = () => {
+    setTitle('');
+    setDesc('');
+    setCustomer('');
+    setPriority('LOW PRIORITY');
     onClose();
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white w-full max-w-md rounded-3xl shadow-2xl p-8">
+    <dialog ref={dialogRef} className="modal modal-bottom sm:modal-middle">
+      <div className="modal-box max-w-md rounded-3xl">
         <h2 className="text-2xl font-bold text-[#001931] mb-6">Create New Ticket</h2>
-        
+
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-[10px] font-bold text-gray-600 uppercase mb-1">Customer Name</label>
-            <input required type="text" value={customer} onChange={(e) => setCustomer(e.target.value)} 
-              className="w-full p-3 bg-gray-200 rounded-xl border-none outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. Sahara Khatun"/>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text text-[10px] font-bold text-gray-600 uppercase">Customer Name</span>
+            </label>
+            <input
+              required
+              type="text"
+              value={customer}
+              onChange={(e) => setCustomer(e.target.value)}
+              className="input input-bordered w-full bg-gray-100"
+              placeholder="e.g. Sahara Khatun"
+            />
           </div>
 
-          {/* Priority Dropdown */}
-          <div>
-            <label className="block text-[10px] font-bold text-gray-600 uppercase mb-1">Priority</label>
-            <select value={priority} onChange={(e) => setPriority(e.target.value)}
-              className="w-full p-3 bg-gray-200 rounded-xl border-none outline-none focus:ring-2 focus:ring-blue-500">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text text-[10px] font-bold text-gray-600 uppercase">Priority</span>
+            </label>
+            <select
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+              className="select select-bordered w-full bg-gray-100"
+            >
               <option value="LOW PRIORITY">Low</option>
               <option value="MEDIUM PRIORITY">Medium</option>
               <option value="HIGH PRIORITY">High</option>
             </select>
           </div>
 
-          {/* Title Field */}
-          <div>
-            <label className="block text-[10px] font-bold text-gray-600 uppercase mb-1">Ticket Title</label>
-            <input required type="text" value={title} onChange={(e) => setTitle(e.target.value)}
-              className="w-full p-3 bg-gray-200 rounded-xl border-none outline-none focus:ring-2 focus:ring-blue-500"  placeholder="Enter issue title..." placeholder:text-gray-400 outline-none transition-all />
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text text-[10px] font-bold text-gray-600 uppercase">Ticket Title</span>
+            </label>
+            <input
+              required
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="input input-bordered w-full bg-gray-100"
+              placeholder="Enter issue title..."
+            />
           </div>
 
-          {/* Description Field */}
-          <div>
-            <label className="block text-[10px] font-bold text-gray-600 uppercase mb-1">Description</label>
-            <textarea required rows="3" value={desc} onChange={(e) => setDesc(e.target.value)}
-              className="w-full p-3 bg-gray-200 rounded-xl border-none outline-none focus:ring-2 focus:ring-blue-500" placeholder="Briefly explain the issue..."></textarea>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text text-[10px] font-bold text-gray-600 uppercase">Description</span>
+            </label>
+            <textarea
+              required
+              rows="3"
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+              className="textarea textarea-bordered w-full bg-gray-100"
+              placeholder="Briefly explain the issue..."
+            ></textarea>
           </div>
 
-          <div className="flex gap-4 pt-6">
-            <button type="button" onClick={onClose} className="flex-1 py-3 font-bold text-gray-700">Cancel</button>
-            <button type="submit" className="flex-1 py-3 bg-[#001931] text-white font-bold rounded-2xl hover:bg-blue-900 transition-all shadow-lg active:scale-95">Create Ticket</button>
+          <div className="modal-action">
+            <button type="button" onClick={handleClose} className="btn btn-ghost">Cancel</button>
+            <button type="submit" className="btn bg-[#001931] text-white hover:bg-blue-900">Create Ticket</button>
           </div>
         </form>
       </div>
-    </div>
+      <form method="dialog" className="modal-backdrop">
+        <button onClick={handleClose}>close</button>
+      </form>
+    </dialog>
   );
 };
 
