@@ -5,6 +5,8 @@ const TicketList = ({ tickets, onSelect, taskStatus, onComplete, resolvedTasks }
   const [visibleCount, setVisibleCount] = useState(10);
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [priorityFilter, setPriorityFilter] = useState('All');
 
   const getPriorityBadge = (priority) => {
     if (priority === 'HIGH PRIORITY') return 'badge-error';
@@ -27,14 +29,54 @@ const TicketList = ({ tickets, onSelect, taskStatus, onComplete, resolvedTasks }
     onSelect(ticket);
   };
 
+  const filteredTickets = tickets.filter((ticket) => {
+    const matchesSearch =
+      ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      ticket.customer.toLowerCase().includes(searchTerm.toLowerCase());
+
+    const matchesPriority =
+      priorityFilter === 'All' ||
+      (priorityFilter === 'High' && ticket.priority === 'HIGH PRIORITY') ||
+      (priorityFilter === 'Medium' && ticket.priority === 'MEDIUM PRIORITY') ||
+      (priorityFilter === 'Low' && ticket.priority === 'LOW PRIORITY');
+
+    return matchesSearch && matchesPriority;
+  });
+
   return (
     <div className="bg-[#F5F5F5] px-4 md:px-16 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div className="lg:col-span-2 order-2 lg:order-1">
           <h2 className="text-2xl font-bold text-[#001931] mb-6">Customer Tickets</h2>
 
+          <div className="flex flex-col md:flex-row gap-4 mb-6">
+            <input
+              type="text"
+              placeholder="Search by title or customer..."
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setVisibleCount(10);
+              }}
+              className="input input-bordered flex-1 bg-white"
+            />
+            <select
+              value={priorityFilter}
+              onChange={(e) => {
+                setPriorityFilter(e.target.value);
+                setVisibleCount(10);
+              }}
+              className="select select-bordered bg-white min-w-max"
+            >
+              <option value="All">All Priorities</option>
+              <option value="High">High Priority</option>
+              <option value="Medium">Medium Priority</option>
+              <option value="Low">Low Priority</option>
+            </select>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {tickets.slice(0, visibleCount).map((ticket) => (
+            {filteredTickets.slice(0, visibleCount).map((ticket) => (
               <div
                 key={ticket.id}
                 onClick={() => handleTicketClick(ticket)}
@@ -64,7 +106,12 @@ const TicketList = ({ tickets, onSelect, taskStatus, onComplete, resolvedTasks }
               </div>
             ))}
           </div>
-          {visibleCount < tickets.length && (
+          {filteredTickets.length === 0 && (
+            <div className="text-center py-10 text-[#627382]">
+              <p className="text-sm">No tickets found matching your search and filters.</p>
+            </div>
+          )}
+          {visibleCount < filteredTickets.length && (
             <div className="flex justify-center mt-10">
               <button onClick={() => setVisibleCount(visibleCount + 5)} className="btn bg-[#001931] text-white hover:bg-blue-900">
                 See More Tickets
