@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import TicketDetailsModal from './TicketDetailsModal';
 
 const TicketList = ({ tickets, onSelect, taskStatus, onComplete, resolvedTasks }) => {
   const [visibleCount, setVisibleCount] = useState(10);
+  const [selectedTicket, setSelectedTicket] = useState(null);
+  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
 
   const getPriorityBadge = (priority) => {
     if (priority === 'HIGH PRIORITY') return 'badge-error';
@@ -15,6 +18,15 @@ const TicketList = ({ tickets, onSelect, taskStatus, onComplete, resolvedTasks }
     return 'badge-warning';
   };
 
+  const handleTicketClick = (ticket) => {
+    setSelectedTicket(ticket);
+    setIsDetailsModalOpen(true);
+  };
+
+  const handleStartWorking = (ticket) => {
+    onSelect(ticket);
+  };
+
   return (
     <div className="bg-[#F5F5F5] px-4 md:px-16 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -25,7 +37,7 @@ const TicketList = ({ tickets, onSelect, taskStatus, onComplete, resolvedTasks }
             {tickets.slice(0, visibleCount).map((ticket) => (
               <div
                 key={ticket.id}
-                onClick={() => onSelect(ticket)}
+                onClick={() => handleTicketClick(ticket)}
                 className="card bg-base-100 shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-all h-full"
               >
                 <div className="card-body p-5">
@@ -60,6 +72,14 @@ const TicketList = ({ tickets, onSelect, taskStatus, onComplete, resolvedTasks }
             </div>
           )}
         </div>
+
+        <TicketDetailsModal
+          isOpen={isDetailsModalOpen}
+          onClose={() => setIsDetailsModalOpen(false)}
+          ticket={selectedTicket}
+          onStartWorking={handleStartWorking}
+        />
+
         <div className="lg:col-span-1 order-1 lg:order-2 flex flex-col gap-6">
           
           {/* ১. Task Status */}
