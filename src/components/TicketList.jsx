@@ -80,24 +80,24 @@ const TicketList = ({ tickets, onSelect, taskStatus, onComplete, resolvedTasks }
               <div
                 key={ticket.id}
                 onClick={() => handleTicketClick(ticket)}
-                className="card bg-base-100 shadow-sm border border-base-300 cursor-pointer hover:shadow-md transition-all h-full"
+                className="card bg-gray-900 shadow-sm border border-gray-800 cursor-pointer hover:shadow-md transition-all h-full"
               >
                 <div className="card-body p-5">
                   <div className="flex justify-between items-start mb-3 gap-2">
-                    <h3 className="card-title text-[16px] leading-tight flex-1 text-base-content">{ticket.title}</h3>
+                    <h3 className="card-title text-[16px] leading-tight flex-1 text-white">{ticket.title}</h3>
                     <div className={`badge badge-sm ${getStatusBadge(ticket.status)}`}>
                       {ticket.status}
                     </div>
                   </div>
 
-                  <p className="text-base-content/70 text-[12px] mb-5 line-clamp-2">{ticket.description}</p>
+                  <p className="text-gray-300 text-[12px] mb-5 line-clamp-2">{ticket.description}</p>
 
-                  <div className="flex justify-between items-center text-[10px] font-bold border-t border-base-300 pt-3">
-                    <span className='text-base-content/50'>#{ticket.id}</span>
+                  <div className="flex justify-between items-center text-[10px] font-bold border-t border-gray-700 pt-3">
+                    <span className='text-gray-400'>#{ticket.id}</span>
                     <div className={`badge badge-sm text-[10px] px-2 py-1 ${getPriorityBadge(ticket.priority)}`}>
                       {ticket.priority}
                     </div>
-                    <div className="flex gap-2 text-base-content/70">
+                    <div className="flex gap-2 text-gray-300">
                       <span>{ticket.customer}</span>
                       <span>📅 {ticket.createdAt}</span>
                     </div>
