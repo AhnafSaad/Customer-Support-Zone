@@ -44,7 +44,7 @@ const TicketList = ({ tickets, onSelect, taskStatus, onComplete, resolvedTasks }
   });
 
   return (
-    <div className="bg-base-200 px-4 md:px-16 py-8">
+    <div className="bg-base-100 px-4 md:px-16 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div className="lg:col-span-2 order-2 lg:order-1">
           <h2 className="text-2xl font-bold text-base-content mb-6">Customer Tickets</h2>
@@ -94,7 +94,7 @@ const TicketList = ({ tickets, onSelect, taskStatus, onComplete, resolvedTasks }
 
                   <div className="flex justify-between items-center text-[10px] font-bold border-t border-base-300 pt-3">
                     <span className='text-base-content/50'>#{ticket.id}</span>
-                    <div className={`badge badge-sm ${getPriorityBadge(ticket.priority)}`}>
+                    <div className={`badge badge-sm text-[10px] px-2 py-1 ${getPriorityBadge(ticket.priority)}`}>
                       {ticket.priority}
                     </div>
                     <div className="flex gap-2 text-base-content/70">
@@ -107,7 +107,7 @@ const TicketList = ({ tickets, onSelect, taskStatus, onComplete, resolvedTasks }
             ))}
           </div>
           {filteredTickets.length === 0 && (
-            <div className="text-center py-10 text-base-content/70">
+            <div className="text-center py-10 text-base-content/70 bg-base-100">
               <p className="text-sm">No tickets found matching your search and filters.</p>
             </div>
           )}
@@ -155,7 +155,7 @@ const TicketList = ({ tickets, onSelect, taskStatus, onComplete, resolvedTasks }
               resolvedTasks.map((t) => (
                 <div
                    key={t.id}
-                     className="flex items-center gap-4 p-4 bg-base-200 rounded-xl border border-base-300 hover:border-success transition-all group"
+                     className="flex items-center gap-4 p-4 bg-base-100 rounded-xl border border-base-300 hover:border-success transition-all group"
                   >
                 <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center shrink-0">
                  <svg width="14" height="14" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -180,7 +180,7 @@ const TicketList = ({ tickets, onSelect, taskStatus, onComplete, resolvedTasks }
         </div>
       ))
     ) : (
-      <div className="text-base-content/50 text-xs italic py-10 border-2 border-dashed border-base-300 rounded-2xl text-center bg-base-200">
+      <div className="text-base-content/50 text-xs italic py-10 border-2 border-dashed border-base-300 rounded-2xl text-center bg-base-100">
         No tasks resolved yet.
       </div>
     )}
