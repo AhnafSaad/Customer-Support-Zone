@@ -1,102 +1,54 @@
-📘 React Conceptual Questions & Answers
-1️⃣ What is JSX, and why is it used?
+# Customer Support Zone 🎫
 
-Answer:
+A modern, streamlined customer support ticket management system built with React, Vite, Tailwind CSS, and DaisyUI. This application allows support agents to efficiently track, manage, and resolve customer issues.
 
-JSX এর পূর্ণরূপ হলো JavaScript XML। এটি জাভাস্ক্রিপ্টের একটি syntax extension যা আমাদের জাভাস্ক্রিপ্ট ফাইলের ভেতরেই HTML-এর মতো কোড লিখতে সাহায্য করে।
+## 🚀 Features
 
-কেন ব্যবহার করা হয়?
+- **Ticket Management**: View a comprehensive list of customer tickets with details like title, ID, priority, customer name, and creation date.
+- **Create New Tickets**: Easily add new support tickets through a user-friendly modal form.
+- **Task Workflow**: Move tickets from "Open" to "Task Status" (In-Progress) and finally mark them as "Resolved".
+- **Real-time Metrics**: Visual banner displaying the current count of in-progress and successfully resolved tasks.
+- **Search & Filter**: Search tickets by title or customer name, and filter them based on priority levels (High, Medium, Low).
+- **Toast Notifications**: Instant interactive feedback for user actions (creating, updating, or resolving tickets) using `react-toastify`.
+- **Responsive Design**: Fully responsive UI optimized for both desktop and mobile devices.
 
-সাধারণ জাভাস্ক্রিপ্ট দিয়ে UI তৈরি করা বেশ জটিল ও সময়সাপেক্ষ। JSX ব্যবহার করলে—
+## 🛠️ Tech Stack
 
-কোড দেখতে অনেক পরিষ্কার লাগে
+- **Frontend Framework**: [React 19](https://react.dev/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **UI Components**: [DaisyUI](https://daisyui.com/)
+- **Notifications**: [React Toastify](https://fkhadra.github.io/react-toastify/)
 
-সহজে বোঝা যায় কোন স্ট্রাকচারটি ব্রাউজারে render হবে
+## ⚙️ Installation & Setup
 
-React অ্যাপ্লিকেশন তৈরি করা সহজ হয়
+Follow these steps to run the project locally on your machine:
 
-2️⃣ What is the difference between State and Props?
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repository-url>
+   cd customer-support-zone
 
-Answer:
+   Install dependencies:
+Make sure you have Node.js installed, then run:
 
-সহজভাবে বলতে গেলে:
+Bash
+npm install
+Start the development server:
 
-Props
+Bash
+npm run dev
+Open in Browser:
+Navigate to http://localhost:5173 in your web browser to see the application running.
 
-Props হলো Properties এর সংক্ষিপ্ত রূপ
+📁 Project Structure Overview
+src/components/ - Contains all reusable React components (Navbar, Banner, TicketList, TicketDetailsModal, etc.).
 
-এটি এক কম্পোনেন্ট থেকে অন্য কম্পোনেন্টে ডাটা পাঠানোর জন্য ব্যবহার করা হয়
+src/tickets.json - Contains the initial mock data for the application.
 
-সাধারণত Parent → Child এ ডাটা যায়
+src/App.jsx - The main application component that manages the global state and layout.
 
-Props হলো Read-only (চাইল্ড কম্পোনেন্ট এটি পরিবর্তন করতে পারে না)
+🤝 Contributing
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page if you want to contribute.
 
-State
-
-State হলো একটি কম্পোনেন্টের নিজস্ব ডাটা স্টোরেজ
-
-এটি Mutable (পরিবর্তনশীল)
-
-যখন State পরিবর্তন হয়, তখন React স্বয়ংক্রিয়ভাবে কম্পোনেন্টকে পুনরায় render করে
-
-3️⃣ What is the useState hook, and how does it work?
-
-Answer:
-
-useState হলো React-এর একটি built-in Hook যা functional component-এ state manage করতে ব্যবহার করা হয়।
-
-কাজ করার পদ্ধতি
-
-যখন আমরা useState ব্যবহার করি, এটি একটি array return করে যার দুটি অংশ থাকে:
-
-Current State → বর্তমান ভ্যালু
-
-Updater Function → ভ্যালু পরিবর্তন করার ফাংশন
-
-Example
-const [count, setCount] = useState(0);
-
-এখানে:
-
-count → বর্তমান state value
-
-setCount() → state update করার function
-
-4️⃣ How can you share state between components in React?
-
-Answer:
-
-React-এ কম্পোনেন্টগুলোর মধ্যে state শেয়ার করার প্রধান উপায় হলো Lifting State Up।
-
-কিভাবে কাজ করে
-
-যদি দুটি child component এর একই data প্রয়োজন হয়:
-
-সেই state তাদের common parent component-এ রাখা হয়
-
-তারপর props এর মাধ্যমে child component গুলোতে পাঠানো হয়
-
-Other Methods (Large Projects)
-
-Context API
-
-Redux
-
-5️⃣ How is event handling done in React?
-
-Answer:
-
-React-এ event handling অনেকটা HTML এর মতো, তবে কিছু গুরুত্বপূর্ণ পার্থক্য আছে।
-
-Main Differences
-
-1️⃣ Event name camelCase এ লিখতে হয়
-❌ onclick
-✅ onClick
-
-2️⃣ Event handler হিসেবে function pass করতে হয়, string নয়
-
-Example
-<button onClick={handleClick}>Click Me</button>
-
-এখানে handleClick একটি function যা button click করলে execute হবে।
+Designed & Developed by Ahnaf Sadik Saad
